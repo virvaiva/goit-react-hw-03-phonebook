@@ -11,7 +11,7 @@ export const ContactList = ({ contacts, deleteContact }) => (
         <MdOutlineContactPhone />
         {contact.name}: {contact.number}
         <BtnDelete type="button" onClick={() => deleteContact(contact.id)}>
-          Deletes
+          Delete
         </BtnDelete>
       </ListLi>
     ))}
