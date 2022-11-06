@@ -25,7 +25,7 @@ export class Contact extends React.Component {
   reset = () => {
     this.setState({ name: '', number: '' });
   };
-
+  
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
