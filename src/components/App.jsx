@@ -38,21 +38,19 @@ export class App extends React.Component {
 
   formSubmit = ({ name, number }) => {
     const contact = { id: nanoid(), name, number };
-    if (this.state.contacts.some(e => e.name === name)) {
+    const exist = this.state.contacts.some(e => e.name === name);
+    if (exist) {
       return alert(`${name} is already in contacts!`);
     }
 
     this.setState(({ contacts }) => ({ contacts: [contact, ...contacts] }));
   };
-  componentDidMount() {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  }
-  componentDidUpdate(prevState) {
-    console.log('app componentDidUpdate');
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
+
+  handleFormSubmit = () => {
+    const { contacts, deleteContact } = this.state;
+    localStorage.setItem('contacts', contacts ? deleteContact : '');
+  };
+
   render() {
     return (
       <div
